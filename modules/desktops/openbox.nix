@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 let
   cfg = config.desktops.openbox;
   inherit (lib) mkIf mkEnableOption;
