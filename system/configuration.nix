@@ -9,6 +9,7 @@
 
   desktops.enable = true;
   desktops.gnome.enable = true;
+  desktops.openbox.enable = true;
   services.xserver.displayManager.gdm.enable = true;
 
   # kernel version

@@ -9,7 +9,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    desktops.wayland.enable = true;
+    desktops.xorg.enable = true;
     services.xserver.windowManager.openbox.enable = true;
     environment.systemPackages = with pkgs; [
       obconf
