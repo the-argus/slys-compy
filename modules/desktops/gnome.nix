@@ -1,4 +1,4 @@
-{ config, options, unstable, pkgs, lib, ... }:
+{ config, options, unstable, pkgs, lib, username, ... }:
 let
   cfg = config.desktops.gnome;
   inherit (lib) mkIf mkEnableOption;
@@ -11,7 +11,13 @@ in
   config = mkIf cfg.enable {
     services.xserver.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
-
+    services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+      [com.ubuntu.login-screen]
+      background-repeat='no-repeat'
+      background-size='cover'
+      background-color='#777777'
+      background-picture-uri='file:///home/${username}/.local/GDM.png'
+    '';
     desktops.wayland.enable = true;
 
     programs.dconf.enable = true;
@@ -41,9 +47,15 @@ in
       # clip
       # nota
       # index-fm
-      gnome.file-roller gnome.nautilus gnome.sushi
-      gnome.gnome-terminal gnome-photos
-      gnome.evince gnome.totem gnome.gedit gnome.gnome-disk-utility
+      gnome.file-roller
+      gnome.nautilus
+      gnome.sushi
+      gnome.gnome-terminal
+      gnome-photos
+      gnome.evince
+      gnome.totem
+      gnome.gedit
+      gnome.gnome-disk-utility
       gnome.gnome-tweaks
     ]) ++ (
       # nemo and extensions

@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    
+
     home-manager = {
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +50,8 @@
     let
       allowedUnfree = [
         "spotify-unwrapped"
-	"steam" "steam-original"
+        "steam"
+        "steam-original"
       ];
 
       system = "x86_64-linux";
@@ -84,6 +85,18 @@
           plymouth-themes-package = import ./packages/plymouth-themes.nix ({
             inherit pkgs;
           } // plymouth);
+        })
+
+        (self: super: {
+          gnome = super.gnome.overrideScope' (selfg: superg: {
+            gnome-shell = superg.gnome-shell.overrideAttrs (old: {
+              patches = (old.patches or [ ]) ++ [
+                (pkgs.substituteAll {
+                  src = ./packages/patches/gnome-shell_3.38.3-3ubuntu1_3.38.3-3ubuntu2.patch;
+                })
+              ];
+            });
+          });
         })
       ];
     in
