@@ -10,15 +10,11 @@ let
 in
 {
   imports = [
-    ./sway.nix
-    ./awesome.nix
     ./wayland.nix
     ./xorg.nix
-    ./ratpoison.nix
-    ./qtile.nix
+    ./openbox.nix
     ./gnome.nix
     ./plasma.nix
-    ./i3gaps.nix
   ];
 
 
