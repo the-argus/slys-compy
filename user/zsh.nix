@@ -159,6 +159,15 @@
             echo "renamed $total files."
         }
 
+        function update () {
+            pushd ~/System\ Configuration
+            git pull
+            nixos-rebuild switch --use-remote-sudo --flake .
+            home-manager switch --flake .
+            git submodule update && git submodule foreach git pull && nix flake update
+            popd
+        }
+
         autoload -U deer
 
         # CONFIG ----------------------------------------------------------------------
