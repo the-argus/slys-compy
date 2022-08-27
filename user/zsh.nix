@@ -160,7 +160,7 @@
         }
 
         function update () {
-            pushd ~/System\ Configuration
+            pushd ~/.local/src/slys-compy
             git pull
             nixos-rebuild switch --use-remote-sudo --flake .
             home-manager switch --flake .
