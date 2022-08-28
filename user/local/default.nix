@@ -87,6 +87,16 @@
         mimeType = [ "inode/directory" ];
       };
 
+      nixos-manual = {
+        categories = [ "System" ];
+        exec = "nixos-help";
+        type = "Application";
+        Icon = "nix-snowflake";
+        Name = "NixOS Manual";
+        GenericName = "View NixOS documentation in a web browser";
+        noDisplay = true;
+      };
+
       # hide programs I don't launch from rofi
     } // hide "htop"
     // hide "compton"
