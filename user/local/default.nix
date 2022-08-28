@@ -91,9 +91,9 @@
         categories = [ "System" ];
         exec = "nixos-help";
         type = "Application";
-        Icon = "nix-snowflake";
-        Name = "NixOS Manual";
-        GenericName = "View NixOS documentation in a web browser";
+        icon = "nix-snowflake";
+        name = "NixOS Manual";
+        genericName = "View NixOS documentation in a web browser";
         noDisplay = true;
       };
 
