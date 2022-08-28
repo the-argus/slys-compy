@@ -47,6 +47,7 @@ in
       # clip
       # nota
       # index-fm
+      gnome.gnome-packagekit
       gnome.file-roller
       gnome.nautilus
       gnome.sushi

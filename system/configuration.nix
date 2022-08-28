@@ -10,22 +10,8 @@
   desktops.enable = true;
   desktops.gnome.enable = true;
   desktops.openbox.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
 
-  environment.systemPackages = [
-    (pkgs.stdenv.mkDervation {
-      name = "Irixium-sddm-theme";
-      src = pkgs.fetchgit {
-        url = "https://www.opencode.net/phob1an/irixium";
-        rev = "a8d582b6228dd7b7fef580824e1a8ddff2d190a0";
-        sha256 = "1sc0yzj5cd507lfkb4hnv10p55dcmfxb9ck8wayi137v1vsavqhd";
-      };
-      installPhase = ''
-        mkdir -p $out/share
-        cp -r $src/sddm $out/share
-      '';
-    })
-  ];
   services.xserver.displayManager.sddm = {
     enable = true;
     theme = "Irixium";
@@ -133,6 +119,19 @@
     ix
     killall
     pciutils
+
+    (pkgs.stdenv.mkDerivation {
+      name = "Irixium-sddm-theme";
+      src = pkgs.fetchgit {
+        url = "https://www.opencode.net/phob1an/irixium";
+        rev = "a8d582b6228dd7b7fef580824e1a8ddff2d190a0";
+        sha256 = "1sc0yzj5cd507lfkb4hnv10p55dcmfxb9ck8wayi137v1vsavqhd";
+      };
+      installPhase = ''
+        mkdir -p $out/share
+        cp -r $src/sddm $out/share
+      '';
+    })
   ];
 
   #system.copySystemConfiguration = true;
