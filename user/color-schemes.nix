@@ -173,7 +173,7 @@
     };
     dribbblish = {
       center = {
-        text = hi3;
+        text = fg;
         inherit bg;
       };
       outer = {
