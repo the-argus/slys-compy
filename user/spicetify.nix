@@ -25,8 +25,10 @@
         };
       });
       enable = true;
-      theme = spicetify-nix.pkgs.themes.Dribbblish;
-      colorScheme = "custom";
+      #theme = spicetify-nix.pkgs.themes.Dribbblish;
+      theme = "SpotifyNoPremium";
+      colorScheme = "";
+      #colorScheme = "custom";
 
       customColorScheme =
         let
@@ -61,20 +63,18 @@
         marketplace
       ];
       enabledExtensions = with spicetify-nix.pkgs.extensions; [
-        # "playlistIcons.js" # only needed if not using dribbblish
+        "playlistIcons.js" # only needed if not using dribbblish
         "fullAlbumDate.js"
         "listPlaylistsWithSong.js"
         "playlistIntersection.js"
         "showQueueDuration.js"
         "featureShuffle.js"
         "playNext.js"
-        "keyboardShortcut.js"
-        "lastfm.js"
         "genre.js"
         "historyShortcut.js"
         "hidePodcasts.js"
-        "fullAppDisplay.js"
         "shuffle+.js"
+        "adblock.js"
       ];
     };
 }

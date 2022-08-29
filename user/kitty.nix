@@ -56,7 +56,7 @@
       themeFormatted = builtins.mapAttrs kittyColorFormat theme;
     in
     {
-      enable = true;
+      enable = false;
       package = unstable.kitty;
 
       settings = {
